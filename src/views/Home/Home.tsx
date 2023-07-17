@@ -8,12 +8,10 @@ import { format, sub } from 'date-fns';
 import LastFiveDays from '../../components/LastFivedays/LastFiveDays';
 
 
-
-const Home = () => {
+const useLoadData = ()=>{
     const [todaysImage, setTodaysImage]=useState<PostImage>({});
     const [lastFiveDaysImages, setLastFiveDaysImages]=useState<PostImage[]>([]);
     
-
     useEffect(()=>{
         const loadTodaysImage = async ()=>{
             try {
@@ -39,7 +37,16 @@ const Home = () => {
         loadTodaysImage().catch(null);
         loadLastFiveDaysImages().catch(null)
     }, []);
-  return (
+
+    return {todaysImage, lastFiveDaysImages}
+
+}
+
+
+const Home = () => {
+    const { todaysImage, lastFiveDaysImages } = useLoadData() 
+
+    return (
     <View style={styles.container}>
         <Header/>
         <TodaysImage {...todaysImage}/>
