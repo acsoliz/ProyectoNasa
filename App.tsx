@@ -6,11 +6,12 @@ import {
   SafeAreaView
 } from 'react-native';
 import Home from './src/views/Home';
+import Routes from './src/routes/Routes';
 
 export default function App():JSX.Element {
   return (
     <SafeAreaView style={styles.container}>
-      <Home/>
+      <Routes/>
       {/* <StatusBar style="auto" /> */}
     </SafeAreaView>
   );
